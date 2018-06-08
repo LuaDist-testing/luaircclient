@@ -1,9 +1,17 @@
+-- This file was automatically generated for the LuaDist project.
+
 package = "luaircclient"
 version = "1.0-9"
+-- LuaDist source
 source = {
-	url = "https://github.com/DigiTechs/luaircclient/archive/master.zip",
-	dir = "luaircclient-master"
+  tag = "1.0-9",
+  url = "git://github.com/LuaDist-testing/luaircclient.git"
 }
+-- Original source
+-- source = {
+-- 	url = "https://github.com/DigiTechs/luaircclient/archive/master.zip",
+-- 	dir = "luaircclient-master"
+-- }
 description = {
 	summary = "A simple wrapper around libircclient",
 	detailed = [[
