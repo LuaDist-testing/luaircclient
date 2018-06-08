@@ -1,10 +1,10 @@
 -- This file was automatically generated for the LuaDist project.
 
 package = "luaircclient"
-version = "1.0-1"
+version = "1.0-2"
 -- LuaDist source
 source = {
-  tag = "1.0-1",
+  tag = "1.0-2",
   url = "git://github.com/LuaDist-testing/luaircclient.git"
 }
 -- Original source
