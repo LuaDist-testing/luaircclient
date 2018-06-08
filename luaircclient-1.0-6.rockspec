@@ -1,10 +1,10 @@
 -- This file was automatically generated for the LuaDist project.
 
 package = "luaircclient"
-version = "1.0-5"
+version = "1.0-6"
 -- LuaDist source
 source = {
-  tag = "1.0-5",
+  tag = "1.0-6",
   url = "git://github.com/LuaDist-testing/luaircclient.git"
 }
 -- Original source
@@ -36,5 +36,8 @@ build = {
 			sources = {"src/irc.c"},
 			libraries = {"ircclient"}
 		}
+	},
+	copy_directores = {
+		"doc", "test"
 	}
 }
