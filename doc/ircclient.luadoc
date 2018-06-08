@@ -1,0 +1,109 @@
+--- luaircclient is a Lua wrapper for libircclient
+-- It's written to be easy to use and re-usable.
+-- All functions throw a Lua error on failiure.
+-- All parameters are required unless stated otherwise.
+
+module "irc"
+
+--- Create a new IRC session, using the given callbacks.
+-- @param callbacks Callbacks table with fields <code>connect</code> and <code>numeric</code>
+-- Both of these are required at a minimum.
+-- @see callbacks
+-- @return Returns a new <code>session</code> object.
+function new(callbacks)
+
+--- Listen on a single session.
+-- @param session An IRC session to listen on
+-- @see think for multiple sessions
+function listen(session)
+
+-- Think on multiple connections
+-- @param sessions A table of IRC connections to think on
+-- @param timeout How long select() waits for, maximum. Defaults to 0.25 seconds.
+function think(sessions, timeout)
+
+--- Connect an IRC session to a server
+-- @param nickname IRC Nickname.
+-- @param host IRC host address.
+-- @param port IRC host port. Defaults to 6667
+-- @param username IRC Username. Defaults to "luaircclient".
+-- @param realname IRC Real name. Defaults to "lua rocks".
+function irc:connect(nickname, host, port, username, realname)
+
+--- Disconnect from an IRC server
+-- @param reason Disconnect reason. Defaults to "bye".
+function irc:quit(reason)
+
+--- Join a channel
+-- @param channel The channel to join.
+-- @param secretkey The channel's secret key. Not required.
+function session:join(channel, secretkey)
+
+--- Leave a channel
+-- @param channel The channel to leave
+function session:part(channel)
+
+--- Invite a user to a channel
+-- @param user Nickname of the user to invite
+-- @param channel The channel to invite them to
+function session:invite(user, channel)
+
+--- Ask for a list of nicknames currently in the channel
+-- @param channel The channel to retrieve a list of nicknames for
+function session:names(channel)
+
+--- Send a message to the given destination
+-- @param destination Who or where to send the message
+-- @param message The message to send
+function session:send(destination, message)
+
+--- Send a raw line of IRC to the server
+-- @param rawline The raw line to send
+function session:send_raw(rawline)
+
+--- Poll for events and data to be sent.
+-- Should be called in a main loop or often enough to not time out.
+-- @param timeout How long select() can wait for maximum. Defaults to 0.25 seconds.
+function session:think(timeout)
+
+--- Set an option
+-- Options should be set before a connection is initiated.
+-- @param option The option to set
+-- @param enabled Whether to enable the option or not
+-- @see options
+function session:set_option(option, enabled)
+
+--- Callbacks as to irc.new()
+-- <ul>
+-- <li><code>numeric</code>Fired on a numeric response from the server.</li>
+-- <li><code>connect</code>Fired when the session connects to an IRC server.</li>
+-- <li><code>nick</code>Fired when a nickname is changed. *</li>
+-- <li><code>quit</code>Fired when somebody disconnects from the server in a channel you have joined.</li>
+-- <li><code>join</code>Fired when somebody joins a channel. *</li>
+-- <li><code>part</code>Fired when somebody leaves a channel. *</li>
+-- <li><code>mode</code>Fired when a channel's mode changes.</li>
+-- <li><code>umode</code>Fired when your user mode changes.</li>
+-- <li><code>topic</code>Fired when the topic of a channel you are in changes.</li>
+-- <li><code>kick</code>Fired when somebody is kicked from a channel you have joined. *</li>
+-- <li><code>channel</code>Fired when a channel message is received.</li>
+-- <li><code>privmsg</code>Fired when a private message is received.</li>
+-- <li><code>notice</code>Fired when a private notice is received. (e.g. from NickServ)</li>
+-- <li><code>channel_notice</code>Fired when a channel notice is received. (e.g. from channel ops)</li>
+-- <li><code>invite</code>Fired when an invite is received.</li>
+-- <li><code>ctcp_req</code>Fired when a CTCP request has been received.</li>
+-- <li><code>ctcp_rep</code>Fired when a CTCP response has been received.</li>
+-- <li><code>ctcp_action</code>Fired when a CTCP action has been received. (e.g. from /me dances)</li>
+-- <li><code>default</code>Fired when an unknown message has been received, or after any event.</li>
+-- </ul>
+-- * Also fired for you
+-- @name callbacks
+-- @class table
+
+-- Options as to session:set_option()
+-- <ul>
+-- <li><code>debug</code>Enables the debug option in libircclient</li>
+-- <li><code>ssl_no_verify</code>Disables verification of SSL certificates sent by the server</li>
+-- <li><code>auto_reconnect</code>Automatically reconnect on disconnect.
+-- </ul>
+-- @name options
+-- @class string

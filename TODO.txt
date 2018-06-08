@@ -1,0 +1,8 @@
+== TODO ==
+
+* Complete API implementation
+* Get feedback
+* Implement suggestions and stuff
+* IPv6 support
+* better SSL support
+* Benchmarks? (To be honest though, they are mostlty based on network speed so it wouldn't be indicative of anything)
